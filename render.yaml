@@ -1,15 +1,19 @@
 services:
   - type: web
     name: gestion-salaires-backend
-    runtime: docker
-    plan: starter
-    dockerfilePath: ./Dockerfile
+    runtime: node
+    buildCommand: npm install && npm run build
+    startCommand: npm run prod:start
     envVars:
       - key: NODE_ENV
         value: production
       - key: DATABASE_URL
-        sync: false # Configurez cette variable avec votre URL Railway
+        sync: false # Will be set manually for database
       - key: JWT_SECRET
         generateValue: true
+      - key: PORT
+        value: 10000
       - key: FRONTEND_URL
-        value: https://gestion-salaires-frontend.vercel.app
+        sync: false # Will be set to Vercel URL
+    healthCheckPath: /api/marketing
+    autoDeploy: true

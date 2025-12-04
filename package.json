@@ -8,9 +8,11 @@
     "dev": "tsx --watch src/server.ts",
     "build": "tsc",
     "start": "node dist/server.js",
+    "postinstall": "prisma generate",
     "prisma:generate": "prisma generate",
-    "prisma:migrate": "prisma migrate dev --name init",
-    "seed": "tsx src/seeders/index.ts"
+    "prisma:migrate": "prisma migrate deploy",
+    "seed": "tsx src/seeders/index.ts",
+    "prod:start": "npm run prisma:migrate && npm run seed && npm run start"
   },
   "dependencies": {
     "@prisma/client": "^4.16.2",

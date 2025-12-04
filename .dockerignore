@@ -22,3 +22,5 @@ uploads/
 logs/
 dist/
 prisma/migrations/
+
+Dockerfile
