@@ -16,11 +16,11 @@ RUN npm ci
 # Copy source code
 COPY . .
 
-# Build the application
-RUN npm run build
-
 # Generate Prisma client
 RUN npx prisma generate
+
+# Build the application
+RUN npm run build
 
 # Expose port
 EXPOSE 4000

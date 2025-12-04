@@ -13,21 +13,22 @@
 4. Le Dockerfile sera automatiquement détecté
 
 ### 2. Configuration de la base de données
-1. Dans votre dashboard Render, créez une nouvelle base de données PostgreSQL
-2. Copiez l'URL de connexion fournie par Render
-3. Dans les variables d'environnement de votre service web, ajoutez :
-   - `DATABASE_URL` : URL de votre base PostgreSQL
-   - `JWT_SECRET` : Générez un secret sécurisé
-   - `NODE_ENV` : production
+Vous utilisez déjà une base PostgreSQL déployée sur Railway. Assurez-vous que :
+
+1. Votre base Railway est accessible depuis Render
+2. Vous avez l'URL de connexion Railway
+3. Les tables sont créées (les migrations s'exécuteront automatiquement)
 
 ### 3. Variables d'environnement
-Assurez-vous d'avoir ces variables configurées :
+Dans les settings de votre service Render, configurez :
 ```
-DATABASE_URL=postgresql://user:password@host:port/database
+DATABASE_URL=postgresql://postgres:UPfYQbzBTmaqJeHShFYgeHHpkLyCfHXE@shuttle.proxy.rlwy.net:53509/railway
 JWT_SECRET=votre_secret_jwt_sécurisé
 NODE_ENV=production
 FRONTEND_URL=https://votre-domaine.vercel.app
 ```
+
+⚠️ **Important** : Utilisez exactement la même URL DATABASE_URL que celle dans votre fichier `.env` local.
 
 ### 4. Déploiement automatique
 Render déploiera automatiquement à chaque push sur la branche principale.
